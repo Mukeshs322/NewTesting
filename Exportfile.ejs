@@ -1,0 +1,120 @@
+<!doctype html>
+<meta http-equiv="refresh" content="60">
+<html>
+   <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+</style>
+<head>
+        <style>
+.TFtable{
+		width:50%; 
+		border-collapse:collapse; 
+	}
+	.TFtable td{ 
+		padding:2px; border:#4e95f4 1px solid;
+	}
+	/* provide some minimal visual accomodation for IE8 and below */
+	.TFtable tr{
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the ODD background rows  */
+	.TFtable tr:nth-child(odd){ 
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the EVEN background rows  */
+	.TFtable tr:nth-child(even){
+		background: #dae5f4;
+	}
+
+                th{
+                    background-color:steelblue;
+                    
+                }
+
+                body {
+                    background-color:mintcream;
+                }
+                
+                h1 {
+                    color:teal;
+                    margin-left: 40px;                
+                } 
+                
+                </style>
+    <title>Travelex Data Control</title>
+</head>
+<body>      
+    <table>
+        <tr>
+            <td><img  src="logo.gif"/></td>
+            <td colspan="3"><h1><center>TRAVELEX DATA CONTROL (BCC Rates)</center></h1></td>
+            <td><h5><center>Last Updated at: <%= new Date().toLocaleString()%></center></h5></td>
+        </tr>
+    </table> 
+
+    <style>
+        .form-group{
+                width:200%; 
+                border-collapse:collapse; 
+            }
+            .form-group td{ 
+                padding:2px; border:#4e95f4 1px solid;
+            }
+        
+        .form-group tr{
+                background: #b8d1f3;
+            }
+        </style>
+        
+        
+       <center>
+           <table>
+           
+          <form action="getexport" method="post">
+
+            <h3 class="text-center">Please find rate difference between today and yesterday</h3><br>
+
+           
+            
+            <div class="form-group2">
+                            
+                    
+                <select name="Database2" id="Database2">
+                <option value="">-- Select Database -- </option>
+                <option value="corporatedataCR">Belgium</option>
+                <option value="corporatedatadu">Dubai</option>
+            </select>
+        </div>
+        <br>
+        <br>
+        <div class="form-group2 tm-yellow-gradient-bg text-center">
+            <button style="margin-right: 16px" type="submit" name="submit" class="tm-yellow-btn">Click here</button>
+
+            <button style="margin-right: 16px" type="submit" name="submit" class="tm-yellow-btn">Export to CSV</button>
+
+            </div>
+            <div class="form-group2 tm-yellow-gradient-bg text-center">
+                <label for="other">File Exported Successfully</label>
+
+            </div>
+        
+          </form>
+         
+        </table>
+            
+        </center>
+        <br>
+        <br>
+    
+       
+    
+   
+
+
+</body>
+</html>

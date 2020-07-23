@@ -1,0 +1,15 @@
+{
+    "EMEA": {
+        "config_id": "EMEA",
+        "server": "ukpbdrmsrv5"
+    },
+    "TAS": {
+        "config_id": "TAS",
+        "server": "gb-pb-ots-002"
+    },
+    "NAM": {
+        "config_id": "NAM",
+        "server": "catodreamsql"
+    }
+    
+}

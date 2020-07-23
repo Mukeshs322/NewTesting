@@ -1,0 +1,194 @@
+<!doctype html>
+<meta http-equiv="refresh" content="60">
+<html>
+    <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+</style>
+<head>
+        <style>
+.TFtable{
+		width:50%; 
+		border-collapse:collapse; 
+	}
+	.TFtable td{ 
+		padding:2px; border:#4e95f4 1px solid;
+	}
+	/* provide some minimal visual accomodation for IE8 and below */
+	.TFtable tr{
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the ODD background rows  */
+	.TFtable tr:nth-child(odd){ 
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the EVEN background rows  */
+	.TFtable tr:nth-child(even){
+		background: #dae5f4;
+	}
+
+                th{
+                    background-color:steelblue;
+                    
+                }
+
+                body {
+                    background-color:mintcream;
+                }
+                
+                h1 {
+                    color:teal;
+                    margin-left: 40px;                
+                } 
+                
+                </style>
+    <title>Travelex Data Control</title>
+</head>
+<body>      
+   <table>
+        <tr>
+            <td><img  src="logo.gif"/></td>
+            <td colspan="3"><h1><center>TRAVELEX DATA CONTROL (BCC Rates)</center></h1></td>
+            <td><h5><center>Last Updated at: <%= new Date().toLocaleString()%></center></h5></td>
+        </tr>
+    </table>
+
+    <style>
+        .form-group{
+                width:200%; 
+                border-collapse:collapse; 
+            }
+            .form-group td{ 
+                padding:2px; border:#4e95f4 1px solid;
+            }
+        
+        .form-group tr{
+                background: #b8d1f3;
+            }
+        </style>
+
+            <html>
+              <head>
+                <title>HTML Links</title>
+            </head>
+
+            <body>
+                 <a href="//localhost:3000">Home Page</a>
+               </body>
+            </html>
+
+       
+<center>
+            
+    <table>
+        <div class="col-md-6">
+        <h3 class="text-center">Select database and date to check rates</h3>
+        <form action="getrates" method="post">
+        <tr>
+        <td>
+        <div class="form-group">
+            
+                <select name="Database" id="Database">
+                <option value="">-- Select Database -- </option>
+                <option value="corporatedataCR">Belgium</option>
+                <option value="corporatedatadu">Dubai</option>
+                <option value="corporatedata_sby">Sainsbury</option>
+            </select>
+           
+                    
+        </div>
+        </td>
+        <td> 
+        <div class="form-group">
+            <label for="Select Date">Date:</label>
+            <input class="form-control" placeholder="Enter Date" id="Txtdate" name="Txtdate">
+           
+            </div>
+        </td>
+        <td>  
+        <div class="form-group tm-yellow-gradient-bg text-center">
+        <button type="submit" name="submit" class="tm-yellow-btn">Click here</button>
+
+        <br>
+
+        <a href="#" onclick="download_table_as_csv('tblexp');">Download as CSV</a>
+        
+        </div>
+        </td>
+        </tr>
+    </form>
+    </div>
+    </table>
+    
+   
+</center>
+    
+    <table id="tblexp" class="TFtable" border="1">
+        <tr rowspan = "5">
+            
+            
+            
+            <th>productid</th>
+            <th>producttypeid</th>
+            <th>Buyrate</th>
+            <th>sellrate</th>
+            <th>date</th>
+
+
+
+        </tr>
+                   
+                <% for(var i = 0;i < data.length;i++) {%>
+                <tr>
+                    
+                   <td><%= data[i].productname%></td>
+                   <td><%= data[i].producttypeid%></td>
+                    <td><%= data[i].buyrate%></td>
+                    <td><%= data[i].sellrate%></td>
+                    <td><%= data[i].entereddate%></td>
+
+                   
+                </tr>
+               <%} %> 
+    </table>
+
+    <script>
+        function download_table_as_csv(table_id) {
+    // Select rows from table_id
+    var rows = document.querySelectorAll('table#' + table_id + ' tr');
+    // Construct csv
+    var csv = [];
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll('td, th');
+        for (var j = 0; j < cols.length; j++) {
+            // Clean innertext to remove multiple spaces and jumpline (break csv)
+            var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+            // Escape double-quote with double-double-quote (see https://stackoverflow.com/questions/17808511/properly-escape-a-double-quote-in-csv)
+            data = data.replace(/"/g, '""');
+            // Push escaped string
+            row.push('"' + data + '"');
+        }
+        csv.push(row.join(','));
+    }
+    var csv_string = csv.join('\n');
+    // Download it
+    var filename = 'export_' + table_id + '_' + new Date().toLocaleDateString() + '.csv';
+    var link = document.createElement('a');
+    link.style.display = 'none';
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+    </script>
+   
+
+
+</body>
+</html>

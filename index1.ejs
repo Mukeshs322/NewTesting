@@ -1,0 +1,176 @@
+<!doctype html>
+<meta http-equiv="refresh" content="60">
+<html>
+    <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+} */
+
+/* tr:nth-child(even) {
+    background-color: #dddddd;
+} */
+</style>
+<head>
+        
+
+    <title>Travelex Data Control</title>
+</head>
+<body>      
+    <table>
+        <tr>
+            <td><img  src="logo.gif"/></td>
+            <td colspan="3"><h1><center>TRAVELEX DATA CONTROL (BCC Rates)</center></h1></td>
+            <td><h5><center>Last Updated at: <%= new Date().toLocaleString()%></center></h5></td>
+        </tr>
+    </table> 
+
+    <style>
+        
+
+        .form-group{
+                width:100%; 
+                border-collapse:collapse; 
+            }
+            .form-group td{ 
+                padding:1px; border:#4e95f4 1px solid;
+            }
+        
+        .form-group tr{
+                background: #b8d1f3;
+            }
+        </style>
+        
+        <html>
+              <head>
+                <title>HTML Links</title>
+             </head>
+
+             <body>
+                 
+                 <a href="//localhost:3000">Home Page</a>
+            </body>
+        </html>
+
+        
+
+        <body>
+        <center>
+            <table>
+                <div class="col-md-6">
+                <h3 class="text-center">Select database and date to check rates</h3>
+                <form action="getrates" method="post">
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            
+                    
+                                <select name="Database" id="Database">
+                                <option value="">-- Select Database -- </option>
+                                <option value="corporatedataCR">Belgium</option>
+                                <option value="corporatedatadu">Dubai</option>
+                                <option value="corporatedata_sby">Sainsbury</option>
+                            </select>
+                           
+                                    
+                       
+                                    
+                        </div>
+                        </td>
+
+                       <td> 
+                           <div class="form-group">
+                            
+                    
+                            <select name="config" id="config">
+                            <option value="">-- Select Region -- </option>
+                            <option value="EMEA">EMEA</option>
+                            <option value="TAS">TAS</option>
+                        </select>
+                        </div>
+                    </td>
+
+                <td> 
+                         <div class="form-group">
+                        
+                    
+                            <label for="Select Date">Date:</label>
+                            <input class="form-control" placeholder="Enter Date" id="Txtdate" name="Txtdate">
+                       
+                        
+                        </div>
+                    
+                </td>
+                <td>  
+                <div class="form-group tm-yellow-gradient-bg text-center">
+                <button type="submit" name="submit" class="tm-yellow-btn">Click here</button>
+                </div>
+                </td>
+            </tr>
+                
+                  
+                    
+
+                
+            </form>
+            </div>
+          </table> 
+        </center>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+       <center>
+        <table>
+        
+       <form action="getdiff" method="post">
+
+         <h3 class="text-center">Please find rate difference between today and yesterday</h3>
+
+        <div class="form-group1">
+                         
+                 
+             <select name="Database1" id="Database1">
+             <option value="">-- Select Database -- </option>
+             <option value="corporatedataCR">Belgium</option>
+             <option value="corporatedatadu">Dubai</option>
+             <option value="corporatedata_sby">Sainsbury</option>
+         </select>
+     </div>
+     <br>
+     <br>
+     <div class="form-group">
+                            
+                    
+        <select name="config" id="config">
+        <option value="">-- Select Region -- </option>
+        <option value="EMEA">EMEA</option>
+        <option value="TAS">TAS</option>
+    </select>
+    </div>
+
+     <br>
+     <br>
+     <div class="form-group1 tm-yellow-gradient-bg text-center">
+         <button type="submit" name="submit" class="tm-yellow-btn">Click here</button>
+         </div>
+     
+       </form>
+       
+     </table>
+         
+     </center>
+    
+   
+
+
+</body>
+</html>

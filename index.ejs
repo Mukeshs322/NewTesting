@@ -1,0 +1,154 @@
+<!doctype html>
+<meta http-equiv="refresh" content="60">
+<html>
+    <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+</style>
+<head>
+        <style>
+.TFtable{
+		width:50%; 
+		border-collapse:collapse; 
+	}
+	.TFtable td{ 
+		padding:2px; border:#4e95f4 1px solid;
+	}
+	/* provide some minimal visual accomodation for IE8 and below */
+	.TFtable tr{
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the ODD background rows  */
+	.TFtable tr:nth-child(odd){ 
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the EVEN background rows  */
+	.TFtable tr:nth-child(even){
+		background: #dae5f4;
+	}
+
+                th{
+                    background-color:steelblue;
+                    
+                }
+
+                body {
+                    background-color:mintcream;
+                }
+                
+                h1 {
+                    color:teal;
+                    margin-left: 40px;                
+                } 
+                
+                </style>
+    <title>Travelex Data Control</title>
+</head>
+<body>      
+    <table>
+        <tr>
+            <td><img  src="logo.gif"/></td>
+            <td colspan="3"><h1><center>TRAVELEX DATA CONTROL (BCC Rates)</center></h1></td>
+            <td><h5><center>Last Updated at: <%= new Date().toLocaleString()%></center></h5></td>
+        </tr>
+    </table> 
+
+    <style>
+        .form-group{
+                width:200%; 
+                border-collapse:collapse; 
+            }
+            .form-group td{ 
+                padding:2px; border:#4e95f4 1px solid;
+            }
+        
+        .form-group tr{
+                background: #b8d1f3;
+            }
+        </style>
+        
+        <body>
+        <center>
+        <table>
+        
+        <b>Select database and date to check rates</b>
+        
+                <tr>
+                    <td>
+                      
+                      <div class="form-group">
+                        <form action="getrates" method="post">
+                            <select class="form-control">
+                                
+                       <option value="">-- Select Database -- </option>
+                    <option value="corporatedataCR">Belgium</option>
+                    <option value="corporatedatadu">Dubai</option>
+                    <option value="corporatedata_sby">Sainsbury</option>
+                    </select> 
+                    </form>
+                </div>
+        
+                     </td>
+        
+                    <td> 
+                        <div class="form-group">
+                           <div class='input-group date' id='Txtdate' name='Txtdate'></div>
+                    <input type='text' class="form-control" placeholder="Select Date" />
+                    <span class="input-group-addon">
+                    <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+                     </td>
+        
+                    <td>  
+                      <div class="form-group tm-yellow-gradient-bg text-center">
+        
+                <button type="submit" name="submit" class="tm-yellow-btn">Click here</button>
+        
+                 </div>
+        
+                   </td>
+        
+                </tr>
+        
+          </table> 
+        </center>
+    
+    <table class="TFtable" border="1">
+        <tr rowspan = "5">
+            
+            
+            
+            <th>productid</th>
+            <th>producttypeid</th>
+            <th>Buyrate</th>
+            <th>sellrate</th>
+            <th>date</th>
+
+
+
+        </tr>
+                   
+                <% for(var i = 0;i < data.length;i++) {%>
+                <tr>
+                    
+                   <td><%= data[i].productname%></td>
+                   <td><%= data[i].producttypeid%></td>
+                    <td><%= data[i].buyrate%></td>
+                    <td><%= data[i].sellrate%></td>
+                    <td><%= data[i].entereddate%></td>
+
+                   
+                </tr>
+               <%} %> 
+    </table>
+   
+   
+
+
+</body>
+</html>
